@@ -1,5 +1,5 @@
 ---
-title: ceshi
+title: XSS 事件
 date: 2020-05-25 14:36:41
 tags:
 ---
@@ -11,7 +11,7 @@ Les articles suivants présentent des moyens de contourner certains protections 
 
 - [XSS without event handlers](https://brutelogic.com.br/blog/xss-without-event-handlers/): pour les situations où les events du type onerror sont bloqués
 
-<!-- 阅读更多 -->
+<!--more-->
 
 ## Liste des events javascripts
 
