@@ -153,9 +153,9 @@ post_copyright:
   license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
 # Please see doc for more details: https://molunerfinn.com/hexo-theme-melody-doc/theme-config.html#auto-excerpt
-auto_excerpt:
-  enable: true
-  length: 150
+# auto_excerpt:
+  # enable: true
+  # length: 250
 
 # slide
 # For reveal.js config, see https://github.com/hakimel/reveal.js#configuration

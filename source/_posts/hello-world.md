@@ -10,6 +10,7 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 ``` bash
 $ hexo new "My New Post"
 ```
+<!-- 阅读更多 -->
 
 More info: [Writing](https://hexo.io/docs/writing.html)
 
