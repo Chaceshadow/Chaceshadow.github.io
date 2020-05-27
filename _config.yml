@@ -4,8 +4,8 @@
 
 # Site
 title: Chaceshadow's Blog
-subtitle: ''
-description: ''
+subtitle: '神无月'
+description: '孟冬'
 keywords:
 author: Ch4ce
 language: zh-Hans
@@ -102,3 +102,23 @@ deploy:
   type: git
   repository: git@github.com:Chaceshadow/Chaceshadow.github.io.git
   branch: master
+
+# Search 
+search:
+  path: ./public/search.xml
+  field: post
+  format: html
+  limit: 10000
+  
+
+live2d:
+  enable: true
+  scriptFrom: local
+  model:
+    use: live2d-widget-model-miku
+  display:
+    position: right
+    width: 150
+    height: 300
+  mobile:
+    show: true

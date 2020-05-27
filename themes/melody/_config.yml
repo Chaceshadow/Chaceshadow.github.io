@@ -21,11 +21,13 @@ menu:
   Archives: /archives
   Tags: /tags
   Categories: /categories
+  About: /about
   #XXX: /xxx
 
 # Favicon
 # ---------------
-favicon: /melody-favicon.ico
+# favicon: /melody-favicon.ico
+favicon: /favicon.png
 
 # PWA
 # See https://github.com/JLHwung/hexo-offline
@@ -66,7 +68,9 @@ algolia_search:
 # Please see doc for more details: https://molunerfinn.com/hexo-theme-melody-doc/third-party-support.html#local-search
 # ---------------
 local_search:
-  enable: false
+  enable: true
+  trigger: auto
+  top_n_per_article: 1
 
 # MathJax
 # Please see doc for more details: https://molunerfinn.com/hexo-theme-melody-doc/third-party-support.html#mathjax
@@ -112,6 +116,9 @@ scripts:
   - /js/transition.js
   - /js/scroll.js
   - /js/head.js
+  - /js/search/algolia.js
+  - /js/search/local-search.js
+
 
 # cdn for third-party library
 # ---------------
@@ -234,7 +241,7 @@ disqus:
 
 # Footer Settings
 # ---------------
-since: 2013
+since: 2020
 
 # footer_custom_text: put custom text directly or put hitokoto to fetch random texts
 
@@ -317,3 +324,5 @@ disable_baidu_transformation: true
 
 # 404 Page SubTitle
 404Text:
+
+
