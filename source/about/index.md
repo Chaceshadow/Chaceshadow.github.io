@@ -18,6 +18,10 @@ layout : slides
 
 --
 
+微信: Chen__shy
+
+--
+
 GitHub: [Chaceshadow](https://github.com/Chaceshadow)  
 
 --
