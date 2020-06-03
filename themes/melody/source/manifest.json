@@ -1,8 +1,8 @@
 {
     "name": "string", //应用全称
     "short_name": "Junzhou", //应用简称
-    "theme_color": "#49b1f5", //匹配浏览器的地址栏颜色
-    "background_color": "#49b1f5",//加载应用时的背景色
+    "theme_color": "#bbd4d9", //匹配浏览器的地址栏颜色
+    "background_color": "#bbd4d9",//加载应用时的背景色
     "display": "standalone",//首选显示模式 其他选项有：fullscreen,minimal-ui,browser
     "scope": "/",
     "start_url": "/",
