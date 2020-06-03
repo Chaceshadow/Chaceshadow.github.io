@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/05/25/XSS/</loc>
+    
+    <lastmod>2020-06-03T11:05:13.318Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/06/03/Tomcat%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%A4%8D%E7%8E%B0%EF%BC%9ACVE-2020-1938/</loc>
     
-    <lastmod>2020-06-03T10:13:07.762Z</lastmod>
+    <lastmod>2020-06-03T11:04:02.366Z</lastmod>
     
   </url>
   
@@ -54,13 +61,6 @@
     <loc>http://yoursite.com/slides/index.html</loc>
     
     <lastmod>2020-05-27T08:17:31.773Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/05/25/XSS/</loc>
-    
-    <lastmod>2020-05-26T02:51:26.773Z</lastmod>
     
   </url>
   
