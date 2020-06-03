@@ -1,7 +1,11 @@
 ---
-title: XSS 事件
+title: XSS 函数
 date: 2020-05-25 14:36:41
-tags:
+categories: 
+- 笔记
+tags: 
+- XSS
+- 跨站脚本
 ---
 # Cross-Site Scripting
 
