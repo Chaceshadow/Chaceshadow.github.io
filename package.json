@@ -14,6 +14,7 @@
   "dependencies": {
     "add": "^2.0.6",
     "hexo": "^4.2.1",
+    "hexo-admin": "^2.3.0",
     "hexo-asset-image": "git+https://github.com/CodeFalling/hexo-asset-image.git",
     "hexo-browsersync": "^0.3.0",
     "hexo-deployer-git": "^2.1.0",
