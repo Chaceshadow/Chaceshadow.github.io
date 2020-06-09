@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/06/09/CVE-2020-0796-SMBv3-RCE%E6%BC%8F%E6%B4%9E%E6%A3%80%E6%B5%8B-%E5%A4%8D%E7%8E%B0/</loc>
+    
+    <lastmod>2020-06-09T12:15:49.555Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/06/09/ThinkPHP-5-%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-POC/</loc>
+    
+    <lastmod>2020-06-09T12:10:49.619Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/06/03/PhpStudy2018%E5%90%8E%E9%97%A8%E6%BC%8F%E6%B4%9E%E9%A2%84%E8%AD%A6%E5%8F%8A%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0&%E6%A3%80%E6%B5%8B%E5%92%8C%E6%89%A7%E8%A1%8CPOC%E8%84%9A%E6%9C%AC/</loc>
     
     <lastmod>2020-06-03T11:09:45.307Z</lastmod>
