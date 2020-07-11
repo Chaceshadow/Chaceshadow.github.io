@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/07/11/CVE-2020-5902%EF%BC%9AF5-BIG-IP-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</loc>
+    
+    <lastmod>2020-07-11T11:01:01.021Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/11/ThinkPHP5-%E6%A0%B8%E5%BF%83%E7%B1%BB-Request-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</loc>
+    
+    <lastmod>2020-07-11T10:59:33.633Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/07/11/%E7%A6%85%E9%81%93%E5%85%A8%E7%89%88%E6%9C%ACrce%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2020-07-11T10:59:10.297Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/06/09/CVE-2020-0796-SMBv3-RCE%E6%BC%8F%E6%B4%9E%E6%A3%80%E6%B5%8B-%E5%A4%8D%E7%8E%B0/</loc>
     
     <lastmod>2020-06-09T13:45:56.214Z</lastmod>
