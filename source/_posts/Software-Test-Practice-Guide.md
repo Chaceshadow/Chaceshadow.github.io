@@ -317,3 +317,4 @@ E类- 建议问题的软件缺陷（Enhancemental）：由问题提出人对测�
 （2）已修正状态(Fixed或Resolved)。
 
 （3）关闭或非激活状态(Close或Inactive)。
+
