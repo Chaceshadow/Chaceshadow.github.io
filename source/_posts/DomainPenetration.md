@@ -1,14 +1,14 @@
 ---
-title: DomainPenetration
+title: 内网渗透之初识域渗透
 categories:
-  - null
+  - 渗透测试
 tags:
-  - null
+  - 内网渗透
+  - 域渗透
+  - 域
 author: Chace
 date: 2020-09-29 19:01:22
 ---
-
-
 
 # 内网渗透之初识域渗透
 
@@ -509,36 +509,3 @@ NTDSDumpEx.exe -d ntds.dit -o hash.txt -s Sys.hiv -h
 ## 0x04 参考资料
 
 [漏洞银行丨内网渗透之初识域渗透-ske丨咖面105期](https://www.bilibili.com/video/BV19J411R7aS)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
