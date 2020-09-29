@@ -413,9 +413,9 @@
     
       <category term="漏洞" scheme="http://yoursite.com/tags/%E6%BC%8F%E6%B4%9E/"/>
     
-      <category term="CVE-2020-0796" scheme="http://yoursite.com/tags/CVE-2020-0796/"/>
-    
       <category term="RCE" scheme="http://yoursite.com/tags/RCE/"/>
+    
+      <category term="CVE-2020-0796" scheme="http://yoursite.com/tags/CVE-2020-0796/"/>
     
       <category term="SMB" scheme="http://yoursite.com/tags/SMB/"/>
     
@@ -478,9 +478,9 @@
     
       <category term="漏洞" scheme="http://yoursite.com/tags/%E6%BC%8F%E6%B4%9E/"/>
     
-      <category term="POC" scheme="http://yoursite.com/tags/POC/"/>
-    
       <category term="漏洞复现" scheme="http://yoursite.com/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+      <category term="POC" scheme="http://yoursite.com/tags/POC/"/>
     
       <category term="后门" scheme="http://yoursite.com/tags/%E5%90%8E%E9%97%A8/"/>
     
