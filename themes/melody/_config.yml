@@ -189,7 +189,7 @@ slide:
   separator: ---
   separator_vertical: --
   charset: utf-8
-  theme: black
+  theme: simple
   # optional
   mouseWheel: false
   transition: slide

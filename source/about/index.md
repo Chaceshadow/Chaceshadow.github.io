@@ -5,16 +5,14 @@ layout : slides
 ---
 
 
-> A Hacker, live in WuHan, China.
 
+> 不以物喜，不以己悲
 
 --
+
+A Hacker, Live in WuHan, China.
 
 一个安全菜鸟，单身求撩！
-
---
-
-现居：武汉  
 
 --
 
