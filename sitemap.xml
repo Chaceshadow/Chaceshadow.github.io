@@ -16,16 +16,16 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/09/28/Software-Test-Practice-Guide/</loc>
+    <loc>http://yoursite.com/2020/09/28/The-Security-of-Software-Evaluation/</loc>
     
     <lastmod>2020-09-30</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/09/28/The-Security-of-Software-Evaluation/</loc>
+    <loc>http://yoursite.com/2020/09/28/Software-Test-Practice-Guide/</loc>
     
-    <lastmod>2020-09-29</lastmod>
+    <lastmod>2020-09-30</lastmod>
     
   </url>
   
@@ -256,6 +256,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite.com/tags/%E5%9F%9F/</loc>
+    <lastmod>2020-09-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
@@ -271,13 +278,6 @@
   
   <url>
     <loc>http://yoursite.com/tags/F5/</loc>
-    <lastmod>2020-09-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/tags/%E5%9F%9F/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
