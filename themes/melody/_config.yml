@@ -167,7 +167,7 @@ post_meta:
 
 # Please see doc for more details: https://molunerfinn.com/hexo-theme-melody-doc/additional-package-support.html#word-counting
 wordcount:
-  enable: false
+  enable: true
 
 toc:
   enable: true

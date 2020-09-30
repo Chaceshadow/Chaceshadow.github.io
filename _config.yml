@@ -145,11 +145,11 @@ live2d:
   pluginJsPath: lib/ # 脚本文件相对与插件根目录路径
   pluginModelPath: assets/ # 模型文件相对与插件根目录路径
   model:   
-    use: live2d-widget-model-tororo # 下载的动画模型名称
+    use: live2d-widget-model-haruto # 下载的动画模型名称
   display:
     superSample: 2
     width: 210
     height: 420
-    position: left # 模型显示在网页上的位置
+    position: right # 模型显示在网页上的位置
     hOffset: 0
     vOffset: -20
