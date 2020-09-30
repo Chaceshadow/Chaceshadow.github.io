@@ -1,5 +1,5 @@
 ---
-title: ThinkPHP5 核心类 Request 远程代码漏洞分析
+title: ThinkPHP5 核心类 Request 远程代码漏洞复现+Poc
 categories:
   - 漏洞复现
 tags:
@@ -11,11 +11,7 @@ tags:
 author: Chace
 date: 2020-07-11 18:47:35
 ---
-# ThinkPHP5 核心类 Request 远程代码漏洞复现+Poc
-
-
-
-# 漏洞介绍
+## 漏洞介绍
 
 2019年1月11日，ThinkPHP团队发布了一个[补丁更新](https://blog.thinkphp.cn/910675)，修复了一处由于不安全的动态函数调用导致的远程代码执行漏洞。
 
@@ -25,17 +21,17 @@ ThinkPHP官方发布新版本5.0.24，在1月14日和15日又接连发布两个�
 
 <!--more-->
 
-# 影响版本
+## 影响版本
 
 启明星辰ADLab安全研究员对ThinkPHP的多个版本进行源码分析和验证后，确认具体受影响的版本为ThinkPHP5.0-5.0.23完整版。
 
 
 
-# 漏洞复现
+## 漏洞复现
 
 本地环境采用ThinkPHP 5.0.10和5.0.22完整版+PHP7.0.9+Apache2.4.39进行复现。安装环境后执行POC即可执行系统命令
 
-## 版本 5.0.0-5.0.12
+### 版本 5.0.0-5.0.12
 > Payload：
 
 ```http
@@ -59,7 +55,7 @@ POC执行结果如下图：
 
 
 
-## 版本 5.0.12-5.0.23
+### 版本 5.0.12-5.0.23
 
 在5.0.12之后的版本中，在`thinkphp/library/think/App.php的module`方法中增加了设置filter过滤属性的代码
 
@@ -162,7 +158,7 @@ POC执行结果如下图：
 
    ![](11.png)
 
-## 版本 5.1.10（PHP7.3.4+Apache2.4.39）
+### 版本 5.1.10（PHP7.3.4+Apache2.4.39）
 
 5.1和5.2两个版本现在用的很少，并且针对于这两个版本有点鸡肋，需要index.php文件中跳过报错提示。 语句：error_reporting(0);
 
@@ -197,7 +193,7 @@ c=system&f=whoami&_method=filter
 
 ![](14.png)
 
-# 漏洞防御
+## 漏洞防御
 
 1. 线上环境建议关闭debug模式
 
@@ -209,7 +205,7 @@ c=system&f=whoami&_method=filter
    
    
 
-# 参考链接
+## 参考链接
 
 [ThinkPHP5 远程代码执行漏洞分析](https://seaii-blog.com/index.php/2019/01/14/88.html)
 

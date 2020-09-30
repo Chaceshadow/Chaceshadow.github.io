@@ -11,8 +11,6 @@ tags:
   - 弹药库
 author: Chace
 ---
-# HW弹药库之红队作战手册
-
 ---
 本文来自klionsec的github
 

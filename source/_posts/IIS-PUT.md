@@ -13,10 +13,6 @@ date:
 
 ---
 
-# IIS PUT漏洞复现（MOVE方法 207 Multi-Status错误解决）
-
-
-
 ## 漏洞介绍
 
 WebDAV（Web-based Distributed Authoring and Versioning） 是一种HTTP1.1的扩展协议。它扩展了HTTP 1.1，在GET、POST、HEAD等几个HTTP标准方法以外添加了一些新的方法，使应用程序可对Web Server直接读写，并支持写文件锁定(Locking)及解锁(Unlock)，还可以支持文件的版本控制。这样就可以像操作本地文件夹一样操作服务器上的文件夹。当然该扩展也存在缺陷，可以被恶意攻击者利用，直接上传恶意文件。

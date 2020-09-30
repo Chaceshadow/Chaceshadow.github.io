@@ -8,13 +8,10 @@ tags:
 - 后门
 - POC
 - PhpStudy2018
-- 漏洞复现
+- 漏洞复现Phpstudy介绍
 ---
 
-
-
-
-## phpstudy介绍
+## PhpStudy介绍
 Phpstudy是国内的一款免费的PHP调试环境的程序集成包，其通过集成Apache、PHP、MySQL、phpMyAdmin、ZendOPtimizer不同版本软件于一身，一次性安装无需配置即可直接使用，具有PHP环境调试和PHP开发功能。由于其免费且方便的特性，在国内有着近百万的PHP语言学习者和开发者用户
 
 ## 后门事件
