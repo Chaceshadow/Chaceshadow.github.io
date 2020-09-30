@@ -103,6 +103,9 @@ deploy:
   repository: git@github.com:Chaceshadow/Chaceshadow.github.io.git
   branch: master
 
+admin:
+ deployCommand: 'hexo-pubish.bat'
+
 # Search 
 search:
   path: ./public/atom.xml
@@ -127,6 +130,10 @@ offline:
       options:
         origin: https://chaceshadow.github.io # 可替换成你的 url
         
+
+#  hexo-browsersync 热更新插件，并且出现文章中文显示不全、渲染出错的情况，添加下面代码或者直接去package.json中删除了hexo-browsersync
+server:
+  compress: true
 
 
 # Live2D
