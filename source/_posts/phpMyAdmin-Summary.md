@@ -12,6 +12,7 @@ date: 2020-10-14 14:30:15
 
 >phpMyAdmin 是一个以PHP为基础，以Web-Base方式架构在网站主机上的MySQL的数据库管理工具，让管理者可用Web接口管理MySQL数据库。借由此Web接口可以成为一个简易方式输入繁杂SQL语法的较佳途径，尤其要处理大量资料的汇入及汇出更为方便。其中一个更大的优势在于由于phpMyAdmin跟其他PHP程式一样在网页服务器上执行，但是您可以在任何地方使用这些程式产生的HTML页面，也就是于远端管理MySQL数据库，方便的建立、修改、删除数据库及资料表。也可借由phpMyAdmin建立常用的php语法，方便编写网页时所需要的sql语法正确性。
 
+<!--more-->
 
 ## 0x01 信息收集
 
@@ -518,7 +519,7 @@ http://192.168.209.139:8001/server_privileges.php?ajax_requests=true&validate_us
 
 我们查看后端收到的数据，可以看到SQL已经成功拼接。
 
-![](H:/Blog/1.png)
+![](1.png)
 
 执行完毕后程序只会告知SQL是否执行成功，失败会报错，因此此处我们可以利用报错注入。
 
@@ -530,7 +531,7 @@ http://192.168.209.139:8001/server_privileges.php?ajax_request=true&validate_use
 
 结果如下，可以看到已经成功执行了我们注入的指令。
 
-![](H:/Blog/2.png)
+![](2.png)
 
 [CVE-2020-0554：phpMyAdmin后台SQL注入](https://cloud.tencent.com/developer/article/1599837)
 
@@ -547,37 +548,37 @@ phpMyAdmin version
 
 在登录状态下，添加一个服务器
 
-![](H:/Blog/3.png)
+![](3.png)
 
 ```javascript
 http://192.168.123.65/phpmyadmin/setup/index.php
 ```
 
-![](H:/Blog/4.png)
+![](4.png)
 
-![](H:/Blog/5.png)
+![](5.png)
 
 点击删除时，通过工具抓包
 
-![](H:/Blog/6.png)
+![](6.png)
 
 参数id对应的是第几个服务器。构造恶意链接。
 
 当然实战中的链接怎么吸引人让目标去点击还得靠自己去构造。
 
-![](H:/Blog/7.png)
+![](7.png)
 
 页面显示404，但img的src会去请求一次。此时创建了两个服务器
 
-![](H:/Blog/8.png)
+![](8.png)
 
 点击我们构造的恶意链接时，显示刚才构造的页面结果
 
-![](H:/Blog/9.png)
+![](9.png)
 
 此时再去查看服务器
 
-![](H:/Blog/10.png)
+![](10.png)
 
 已经被删除，攻击成功。
 
