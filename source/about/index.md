@@ -12,7 +12,7 @@ layout : slides
 
 A Hacker, Live in WuHan, China.
 
-一个安全菜鸟，单身求撩！
+一个安全菜鸟！
 
 --
 
